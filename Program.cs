@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Portfolio.Data;
 
 namespace Portfolio
@@ -16,7 +14,7 @@ namespace Portfolio
            
            //This adds the DbContext to the pages through dependency injection. 
            builder.Services.AddDbContext<PortfolioContext>(options => 
-               options.UseSqlite(ConfigurationExtensions.GetConnectionString(builder.Configuration, "PortfolioDb")));
+               options.UseSqlite(builder.Configuration.GetConnectionString("PortfolioDb")));
 
            var app = builder.Build();
    
